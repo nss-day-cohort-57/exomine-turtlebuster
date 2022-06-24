@@ -15,13 +15,13 @@ export const totalMineralPerFacility = (facility) => {
                 facilityHTML += `<section class="facility_info--${facility.id}">
                              Facility Minerals for${facility.name}</section>`
                     `<li> 
-                <input type="radio" name="style" value="${facility.id}"/>
+                <input type="radio" name="mineral" value="${facility.id}"/>
                     ${facilityMineral.quantity} tons of ${mineral.name}
                     </li>`
-            
-            }
-        } return facilityHTML
-    }
-} 
 
+            }
+        }
+    } 
+    return facilityHTML
+}
 
