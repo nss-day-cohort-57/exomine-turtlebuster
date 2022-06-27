@@ -1,21 +1,36 @@
 import { getFacilitiesMinerals, getMinerals, getFacilities, setFacility } from "./database.js";
 
 // set functions to variables
-
 const minerals = getMinerals()
 const facilities = getFacilities()
 
 //created var to hold a value which will hold the facilityID value once the facility change event takes place 
 let facilityId = 0
+//created var to hold a value which will hold the govId value once the governor change event takes place
+let govId = 0
+
+//listens to when governor is selected
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.id === "governor") {
+            //sets globally scoped var govId value to selected governor
+            govId = (parseInt(event.target.value))
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+        }
+    })
 
 // function that will give selectable options as dropdown for facility with facility.name 
-////////////////need to: to happen only after governor is selected once gov.js is merged
 export const facilitiesHTML = () => {
     let html = "<h2>Choose a Facility</h2>"
     html += '<select id="facility">'
     html += '<option value="0">Choose a Facility...</option>'
-    for (const facility of facilities) {
-        html += `<option value="${facility.id}">${facility.name}</option>`
+    // makes facility options only populate happen governor is selected
+    if (govId > 0) {
+        for (const facility of facilities) {
+            html += `<option value="${facility.id}">${facility.name}</option>`
+        }
+
     }
     html += "</select>"
     return html
