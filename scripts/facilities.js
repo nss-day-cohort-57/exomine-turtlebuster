@@ -30,7 +30,6 @@ export const facilitiesHTML = () => {
         for (const facility of facilities) {
             html += `<option value="${facility.id}">${facility.name}</option>`
         }
-
     }
     html += "</select>"
     return html
@@ -88,7 +87,7 @@ export const totalMineralPerFacilityHTML = () => {
                     //once all three are true interpolate that facilites name w the total minerals available there 
                     //and the minerals name with selectable radio buttons to chose
                     facilityHTML += `<lu> 
-                    <input type="radio" name="mineral" value="${facility.id}"/>
+                    <input type="radio" name="mineral" id="${mineral.id}"value="${facilityMineral.id}"/>
                     ${facilityMineral.quantity} tons of ${mineral.name}
                     </lu>`
                 }
