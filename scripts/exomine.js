@@ -22,7 +22,6 @@ export const exomine = () => {
             ${govsHTML()}
             </section>
             <section class="choices__facilities options">
-            
             ${facilitiesHTML()}  
             </section>
         </article>
