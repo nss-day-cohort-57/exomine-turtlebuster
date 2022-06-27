@@ -1,3 +1,4 @@
+import { totalMineralPerColonyHTML } from "./colonies.js"
 import { purchaseMineral } from "./database.js"
 import { facilitiesHTML, totalMineralPerFacilityHTML } from "./facilities.js"
 import { govsHTML } from './governors.js'
@@ -28,14 +29,11 @@ export const exomine = () => {
             <section class="choices__minerals options">
             ${totalMineralPerFacilityHTML()}
            </section>
+           <article class="colony__minerals">
+            ${totalMineralPerColonyHTML()}
+        </article>
         <article>
             <button id="orderButton">Purchase Mineral</button>
-        </article>
-
-        <article class="customOrders">
-            <h2>Colony Minerals</h2>
-        
-            
         </article>
     `
 }
