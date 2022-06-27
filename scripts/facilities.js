@@ -24,7 +24,7 @@ document.addEventListener(
 export const facilitiesHTML = () => {
     let html = "<h2>Choose a Facility</h2>"
     html += '<select id="facility">'
-    html += '<option value="0">Choose a Facility...</option>'
+    html += `<option value= "0">Choose a Facility...</option>`
     // makes facility options only populate happen governor is selected
     if (govId > 0) {
         for (const facility of facilities) {
