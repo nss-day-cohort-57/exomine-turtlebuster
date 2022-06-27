@@ -1,4 +1,5 @@
 import { purchaseMineral } from "./database.js"
+import { facilitiesHTML, totalMineralPerFacilityHTML  } from "./facilities.js"
 
 
 document.addEventListener(
@@ -22,9 +23,12 @@ export const exomine = () => {
             </section>
             <section class="choices__facilities options">
             
+            ${facilitiesHTML()}  
             </section>
         </article>
-
+            <section class="choices__minerals options">
+            ${totalMineralPerFacilityHTML ()}
+           </section>
         <article>
             <button id="orderButton">Purchase Mineral</button>
         </article>
@@ -32,6 +36,7 @@ export const exomine = () => {
         <article class="customOrders">
             <h2>Colony Minerals</h2>
         
+            
         </article>
     `
 }
