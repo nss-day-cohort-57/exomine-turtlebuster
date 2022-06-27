@@ -3,7 +3,7 @@ const database = {
         { id: 1, active: true, colonyId: 1, name: "Chow Ming" },
         { id: 2, active: true, colonyId: 1, name: "Aragorn Ellasar" },
         { id: 3, active: true, colonyId: 2, name: "Seth Curry" },
-        { id: 4, active: true, colonyId: 2, name: "Darth Vader" },
+        { id: 4, active: true, colonyId: 3, name: "Darth Vader" },
         { id: 5, active: false, colonyId: 3, name: "Brodo Swaggins" }
     ],
     colonies: [
