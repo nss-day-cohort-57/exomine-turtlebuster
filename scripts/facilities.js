@@ -7,22 +7,23 @@ const facilities = getFacilities()
 //created var to hold a value which will hold the facilityID value once the facility change event takes place 
 let facilityId = 0
 /////////// let var of GovId = 0 to hold gonernorId value once change takes place
-let GovId = 0
+//let GovId = 0
 //////////create change event listener to hear when governor is changed that will set the global scoped
 ////////// GovId var to the parseInt(event.target.value) 
-document.addEventListener(
-    "change",
-    (event) => {
-        if (event.target.id === "governor") {
-            //sets the globally scoped GovID var value to the governorId value  
-            GovId = (parseInt(event.target.value))
-           // document.dispatchEvent(new CustomEvent("stateChanged"))
-        }
-    })
-    const testGovId = () => {
-        if(GovId != 0)
-        return GovId
-    }
+
+// document.addEventListener(
+//     "change",
+//     (event) => {
+//         if (event.target.id === "governor") {
+//             //sets the globally scoped GovID var value to the governorId value  
+//             GovId = (parseInt(event.target.value))
+//            // document.dispatchEvent(new CustomEvent("stateChanged"))
+//         }
+//     })
+//     const testGovId = () => {
+//         if(GovId != 0)
+//         return GovId
+//     }
 
 // function that will give selectable options as dropdown for facility with facility.name 
 ////////////////need to: to happen only after governor is selected once gov.js is merged
@@ -32,9 +33,9 @@ export const facilitiesHTML = () => {
     let html = ""
     html += "<h2>Choose a Facility:</h2>"
     ////////// if GovId === 0 { add header and dropdown tab to string}
-    if (GovId === 0) {
-        html += '<select id="facility"><option value="0">Choose a Facility...</option>'
-    } else {
+    // if (GovId === 0) {
+    //     html += '<select id="facility"><option value="0">Choose a Facility...</option>'
+    // } else {
         //html += '<option value="0">Choose a Facility...</option>'
         ///////// also add the interpolated string choices below 
         for (const facility of facilities) {
@@ -44,7 +45,7 @@ export const facilitiesHTML = () => {
         html += "</select>"
     } 
     return html
-}
+//}
 
 // listens for facility to change and sets that facilityId in transient state Obj in database
 // also sets the var facilityId to the value of the facility clicked
