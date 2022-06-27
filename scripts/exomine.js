@@ -1,14 +1,14 @@
 import { purchaseMineral } from "./database.js"
-import { facilitiesHTML, totalMineralPerFacilityHTML  } from "./facilities.js"
-
+import { facilitiesHTML, totalMineralPerFacilityHTML } from "./facilities.js"
+import { govsHTML } from './governors.js'
 
 document.addEventListener(
     "click",
-    (clickEvent) => {  
+    (clickEvent) => {
         const itemClicked = clickEvent.target
         if (itemClicked.id.startsWith("orderButton")) {
-        purchaseMineral()
-    }
+            purchaseMineral()
+        }
     }
 )
 
@@ -19,7 +19,7 @@ export const exomine = () => {
 
         <article class="choices">
             <section class="choices__governors options">
-                
+            ${govsHTML()}
             </section>
             <section class="choices__facilities options">
             
@@ -27,7 +27,7 @@ export const exomine = () => {
             </section>
         </article>
             <section class="choices__minerals options">
-            ${totalMineralPerFacilityHTML ()}
+            ${totalMineralPerFacilityHTML()}
            </section>
         <article>
             <button id="orderButton">Purchase Mineral</button>
