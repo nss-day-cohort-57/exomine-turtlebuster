@@ -34,6 +34,7 @@ export const exomine = () => {
 
         <article class="customOrders">
             <h2>Colony Minerals</h2>
+        
             
         </article>
     `
