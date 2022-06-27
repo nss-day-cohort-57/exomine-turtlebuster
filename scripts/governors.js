@@ -1,31 +1,18 @@
 //import getGovernor()
-import { getGovernor } from "./database.js";
+import { getGovernors } from "./database.js";
 //save getGovernor() to variable
-const governors = getGovernor();
+const governors = getGovernors();
 
-//gov selector
+//html for the active governor choices
 export const govsHTML = () => {
-    //let activeGovs = activeGovernors()
-    //name attribute needed to reference the form data
-    let html = ' '
+    let html = '<h2 for="governors">Choose a Governor:</h2> '
+    html += `<select id='governor'>`
+    html += `<option value='0'>Choose a Governor: </option>`
     for (const governor of governors) {
         if (governor.active === true) {
-            html += `<label for="governors">Choose a Governor:</label>
-  <select name="governors" id="governor">
-    <option value="${activeGov.id}">${activeGov.name}</option>
-  </select>`
+            html += `<option value="${governor.id}">${governor.name}</option>`
         }
-        return html
     }
+    html += `</select>`
+    return html
 }
-//export for exomine.js
-
-//custom event
-document.addEventListener(
-    "change",
-    (event) => {
-        if (event.target.id === "governor") {
-            setGovernor(parseInt(event.target.value))
-        }
-    }
-)
