@@ -18,10 +18,10 @@ export const exomine = () => {
 
         <article class="choices">
             <section class="choices__governors options">
-                ${()}
+                
             </section>
             <section class="choices__facilities options">
-                ${()}
+            
             </section>
         </article>
 
@@ -31,7 +31,7 @@ export const exomine = () => {
 
         <article class="customOrders">
             <h2>Colony Minerals</h2>
-            ${()}
+        
         </article>
     `
 }
