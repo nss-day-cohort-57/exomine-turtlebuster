@@ -73,6 +73,11 @@ export const setFacility = (facilityId) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+export const setColony = (colonyId) => {
+    database.transientState.selectedColony = colonyId
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
 export const purchaseMineral = () => {
 
     const newOrder = { ...database.transientState }
