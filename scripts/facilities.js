@@ -24,13 +24,12 @@ document.addEventListener(
 export const facilitiesHTML = () => {
     let html = "<h2>Choose a Facility</h2>"
     html += '<select id="facility">'
-    html += '<option value="0">Choose a Facility...</option>'
+    html += `<option value= "0">Choose a Facility...</option>`
     // makes facility options only populate happen governor is selected
     if (govId > 0) {
         for (const facility of facilities) {
             html += `<option value="${facility.id}">${facility.name}</option>`
         }
-
     }
     html += "</select>"
     return html
@@ -88,7 +87,7 @@ export const totalMineralPerFacilityHTML = () => {
                     //once all three are true interpolate that facilites name w the total minerals available there 
                     //and the minerals name with selectable radio buttons to chose
                     facilityHTML += `<lu> 
-                    <input type="radio" name="mineral" value="${facility.id}"/>
+                    <input type="radio" name="mineral" id="${mineral.id}"value="${facilityMineral.id}"/>
                     ${facilityMineral.quantity} tons of ${mineral.name}
                     </lu>`
                 }

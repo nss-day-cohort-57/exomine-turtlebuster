@@ -12,10 +12,10 @@ document.addEventListener(
     (event) => {
         if (event.target.id === "governor") {
 
-            chosenGov = true 
+            chosenGov = true
 
             const governorID = (parseInt(event.target.value))
-            
+
             for (const governor of governors) {
                 if (governorID === governor.id)
                     colonyId = governor.colonyId
@@ -48,21 +48,20 @@ export const totalMineralPerColonyHTML = () => {
         const colony = selectedColony()
 
         colonyHTML += `<section class="colony_info--${colony.id}">
-           Colony Minerals for ${colony.name}</section>`
+           <h2>Colony Minerals for ${colony.name}</h2></section>`
 
         for (const coloniesMineral of coloniesMinerals) {
             for (const mineral of minerals) {
 
                 if (colony.id === coloniesMineral.colonyId && mineral.id === coloniesMineral.mineralId) {
-
                     colonyHTML += `<ul> 
+                    
                         <li name="mineral" value="${colony.id}">
                         ${coloniesMineral.quantity} tons of ${mineral.name}</li>`
                 }
             }
         }
         colonyHTML += `</ul>`
-
-    } 
+    }
     return colonyHTML
 }
