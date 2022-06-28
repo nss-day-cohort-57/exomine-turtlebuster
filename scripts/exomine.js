@@ -2,6 +2,7 @@ import { totalMineralPerColonyHTML } from "./colonies.js"
 import { purchaseMineral } from "./database.js"
 import { facilitiesHTML, totalMineralPerFacilityHTML } from "./facilities.js"
 import { govsHTML } from './governors.js'
+import { orders } from "./orders.js";
 
 document.addEventListener(
     "click",
@@ -17,7 +18,6 @@ document.addEventListener(
 export const exomine = () => {
     return `
         <h1>Solor System Mining Marketplace</h1>
-
         <article class="choices">
             <section class="choices__governors options">
             ${govsHTML()}
@@ -33,6 +33,7 @@ export const exomine = () => {
             ${totalMineralPerColonyHTML()}
         </article>
         <article>
+        <section> ${orders()}</section>
             <button id="orderButton">Purchase Mineral</button>
         </article>
     `
