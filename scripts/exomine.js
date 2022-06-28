@@ -18,7 +18,6 @@ document.addEventListener(
 export const exomine = () => {
     return `
         <h1>Solor System Mining Marketplace</h1>
-
         <article class="choices">
             <section class="choices__governors options">
             ${govsHTML()}

@@ -3,7 +3,6 @@
 // ton of selected mineral to colony selected gov is over
 import { setMineral, getFacilities, getMinerals, getFacilitiesMinerals } from "./database.js";
 
-
 // transient Object once mineral selected
 let mineralChoice = false
 let mineralFacilityId = null
