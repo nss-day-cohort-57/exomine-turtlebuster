@@ -19,22 +19,26 @@ export const exomine = () => {
     return `
         <h1>Solor System Mining Marketplace</h1>
         <article class="choices">
+            <div class= "dropDown_tabs">
             <section class="choices__governors options">
             ${govsHTML()}
             </section>
             <section class="choices__facilities options">
             ${facilitiesHTML()}  
             </section>
+            </div>
+            <section class="colony__minerals">
+            ${totalMineralPerColonyHTML()}
+            </section>
         </article>
+        <article class="lower_half>
             <section class="choices__minerals options">
             ${totalMineralPerFacilityHTML()}
            </section>
-           <article class="colony__minerals">
-            ${totalMineralPerColonyHTML()}
         </article>
         <article>
-        <section> ${orders()}</section>
-            <button id="orderButton">Purchase Mineral</button>
+        <section class="inventory"> ${orders()}</section>
+            <button id="orderButton" class="orderButton">Purchase Mineral</button>
         </article>
     `
 }
