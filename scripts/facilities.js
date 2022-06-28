@@ -22,7 +22,7 @@ document.addEventListener(
 
 // function that will give selectable options as dropdown for facility with facility.name 
 export const facilitiesHTML = () => {
-    let html = "<h2>Choose a Facility</h2>"
+    let html = "<h2>Choose a Facility:</h2>"
     html += '<select id="facility">'
     html += `<option value= "0">Choose a Facility...</option>`
     // makes facility options only populate happen governor is selected
