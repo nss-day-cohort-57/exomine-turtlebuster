@@ -17,7 +17,7 @@ document.addEventListener(
 //function that adds all other functions together to create one large HTML element to be displayed to the dom
 export const exomine = () => {
     return `
-        <h1>Solor System Mining Marketplace</h1>
+        <h1 class="header">Solor System Mining Marketplace</h1>
         <article class="choices">
             <div class= "dropDown_tabs">
             <section class="choices__governors options">
@@ -31,14 +31,15 @@ export const exomine = () => {
             ${totalMineralPerColonyHTML()}
             </section>
         </article>
-        <article class="lower_half>
+
+        <article class="lower_half"> 
             <section class="choices__minerals options">
             ${totalMineralPerFacilityHTML()}
            </section>
-        </article>
-        <article>
-        <section class="inventory"> ${orders()}</section>
+        <section class="inventory"> 
+            ${orders()}
             <button id="orderButton" class="orderButton">Purchase Mineral</button>
+            </section>
         </article>
     `
 }
