@@ -30,23 +30,19 @@ const database = {
         { id: 6, mineralId: 3, facilityId: 3, quantity: 3 },
     ],
     coloniesMinerals: [
-        { id: 1, mineralId: 1, colonyId: 1, quantity: 15 },
-        { id: 2, mineralId: 2, colonyId: 1, quantity: 6 },
-        { id: 3, mineralId: 3, colonyId: 2, quantity: 12 },
-        { id: 4, mineralId: 2, colonyId: 3, quantity: 1 }
+        { id: 1, mineralId: 1, colonyId: 1, quantity: 0 },
+        { id: 2, mineralId: 2, colonyId: 1, quantity: 0 },
+        { id: 3, mineralId: 3, colonyId: 1, quantity: 0 },
+        { id: 4, mineralId: 1, colonyId: 2, quantity: 0 },
+        { id: 5, mineralId: 2, colonyId: 2, quantity: 0 },
+        { id: 6, mineralId: 3, colonyId: 2, quantity: 0 },
+        { id: 7, mineralId: 1, colonyId: 3, quantity: 0 },
+        { id: 8, mineralId: 2, colonyId: 3, quantity: 0 },
+        { id: 9, mineralId: 3, colonyId: 3, quantity: 0 },
     ],
-    spaceCart: [
-        {
-            id: 1,
-            facilityId: 2,
-            mineralId: 2,
-            colonyId: 3,
-            quantity: 1
+    
+    spaceCart: {}
 
-        }
-    ],
-
-    transientState: {}
 }
 
 export const getGovernors = () => {
@@ -69,36 +65,45 @@ export const getColoniesMinerals = () => {
 }
 
 export const setFacility = (facilityId) => {
-    database.transientState.selectedFacility = facilityId
-    document.dispatchEvent(new CustomEvent("stateChanged"))
+    database.spaceCart.selectedFacility = facilityId
 }
+
 export const setMineral = (mineralId) => {
-    database.transientState.selectedMineral = mineralId
+    database.spaceCart.selectedMineral = mineralId
    
 }
 
 export const setColony = (colonyId) => {
-    database.transientState.selectedColony = colonyId
-    document.dispatchEvent(new CustomEvent("stateChanged"))
+    database.spaceCart.selectedColony = colonyId
 }
 
-export const setGovernor = (governorId) => {
-    database.transientState.selectedGovernor = governorId
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+
+const subtractFacilityAmount = () => {
+    for (const facilityMineral of database.facilitiesMinerals) {
+        if ((facilityMineral.facilityId === database.spaceCart.selectedFacility) && (facilityMineral.mineralId === database.spaceCart.selectedMineral)) {
+            facilityMineral.quantity -= 1
+        }
+    }
+    
 }
+
+const addColonyAmount = () => {
+    for (const colonyMineral of database.coloniesMinerals) {
+        if ((colonyMineral.colonyId === database.spaceCart.selectedColony) && (colonyMineral.mineralId === database.spaceCart.selectedMineral)) {
+            colonyMineral.quantity += 1
+        }
+
+    }
+}
+
+
 
 export const purchaseMineral = () => {
 
-    const newOrder = { ...database.transientState }
+    subtractFacilityAmount()
 
-    const lastIndex = database.spaceCart.length - 1
-    newOrder.id = database.spaceCart[lastIndex].id + 1
-
-    newOrder.timestamp = Date.now()
-
-    database.spaceCart.push(newOrder)
-
-    database.transientState = {}
+    addColonyAmount()
+    
     // Broadcast custom event to entire documement so that the
     // application can re-render and update state
     document.dispatchEvent(new CustomEvent("stateChanged"))
