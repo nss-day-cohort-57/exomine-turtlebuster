@@ -22,7 +22,7 @@ document.addEventListener(
 
 // function that will give selectable options as dropdown for facility with facility.name 
 export const facilitiesHTML = () => {
-    let html = "<h2>Choose a Facility</h2>"
+    let html = "<h2>Choose a Facility:</h2>"
     html += '<select id="facility">'
     html += `<option value= "0">Choose a Facility...</option>`
     // makes facility options only populate happen governor is selected
@@ -76,7 +76,7 @@ export const totalMineralPerFacilityHTML = () => {
         const facility = selectedFacility()
         // adds interpolated string under header text for selected facility 
         facilityHTML += `<section class="facility_info--${facility.id}">
-        Facility Minerals for ${facility.name}</section>`
+        <h2>Facility Minerals for ${facility.name}</h2></section>`
 
         // iterate through minerals and facilityMinerals to get mineral per Facility quantity
         for (const facilityMineral of facilitiesMinerals) {
