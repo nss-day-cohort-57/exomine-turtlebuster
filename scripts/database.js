@@ -37,12 +37,7 @@ const database = {
     ],
     spaceCart: [
         {
-            id: 1,
-            facilityId: 2,
-            mineralId: 2,
-            colonyId: 3,
-            quantity: 1
-
+            
         }
     ],
 
@@ -70,31 +65,41 @@ export const getColoniesMinerals = () => {
 
 export const setFacility = (facilityId) => {
     database.transientState.selectedFacility = facilityId
-    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setColony = (colonyId) => {
     database.transientState.selectedColony = colonyId
-    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const setGovernor = (governorId) => {
-    database.transientState.selectedGovernor = governorId
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+export const setMineral = (mineralId) => {
+    database.transientState.selectedMineral = mineralId
 }
+
+const subtractFacilityAmount = () => {
+    for (const facilityMineral of database.facilitiesMinerals) {
+        if ((facilityMineral.facilityId === database.spaceCart.facilityId) && (facilityMineral.mineralId === database.spaceCart.mineralId)) {
+            facilityMineral.quantity -= 1
+        }
+
+    }
+}
+
+const addColonyAmount = () => {
+    for (const colonyMineral of database.coloniesMinerals) {
+        if ((colonyMineral.colonyId === database.spaceCart.colonyId) && (colonyMineral.mineralId === database.spaceCart.mineralId)) {
+            colonyMineral.quantity += 1
+        }
+
+    }
+}
+
+
 
 export const purchaseMineral = () => {
 
-    const newOrder = { ...database.transientState }
+    subtractFacilityAmount()
 
-    const lastIndex = database.spaceCart.length - 1
-    newOrder.id = database.spaceCart[lastIndex].id + 1
-
-    newOrder.timestamp = Date.now()
-
-    database.spaceCart.push(newOrder)
-
-    database.transientState = {}
+    addColonyAmount()
     // Broadcast custom event to entire documement so that the
     // application can re-render and update state
     document.dispatchEvent(new CustomEvent("stateChanged"))
