@@ -35,7 +35,7 @@ const database = {
         { id: 3, mineralId: 3, colonyId: 2, quantity: 12 },
         { id: 4, mineralId: 2, colonyId: 3, quantity: 1 }
     ],
-    spaceCart: [
+    spaceCart: 
         {
             id: 1,
             facilityId: 2,
@@ -44,9 +44,6 @@ const database = {
             quantity: 1
 
         }
-    ],
-
-    transientState: {}
 }
 
 export const getGovernors = () => {
